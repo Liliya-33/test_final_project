@@ -1,6 +1,7 @@
 import time
 import pytest
 from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 from .pages.base_page import BasePage
 
 
@@ -65,6 +66,27 @@ def test_quest_can_go_to_login_page_from_product_page(browser):
     time.sleep(5)
     page.go_to_login_page()
 
+
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/"
+    page = ProductPage(browser, link)
+    page.open()
+    time.sleep(1)
+    page.should_click_to_basket_on_page()
+    time.sleep(5)
+    page1 = BasketPage(browser, link)
+    page1.should_be_basket_empty()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    time.sleep(1)
+    page.should_click_to_basket_on_page()
+    time.sleep(5)
+    page1 = BasketPage(browser, link)
+    page1.should_be_not_basket_empty()
 
 
 # def test_user_can_add_product_to_basket(self, browser):
