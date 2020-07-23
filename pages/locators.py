@@ -19,6 +19,7 @@ class LoginPageLocators():
     PASSWORD_2_REGISTER = (By.ID, "id_registration-password2")
     REGISTER_BUTTON = (By.CSS_SELECTOR, "button[name='registration_submit']")
 
+
 class ProductPageLocators():
     BASKET_BUTTON_ON_PAGE = (By.CLASS_NAME, "btn-group")
     BASKET_BUTTON = (By.CLASS_NAME, "btn-add-to-basket")
